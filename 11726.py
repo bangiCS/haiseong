@@ -1,9 +1,6 @@
 
 dp = [0]
 n = int(input())
-
-# n -> x
-# n+1 -> x+1
 # dp(n+2) = dp(n+1) + dp(n)
 
 for i in range(1,n+1):

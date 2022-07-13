@@ -1,56 +1,28 @@
-#
-# def is_sosu(n):
-#     if n < 2:
-#         return 0
-#
-#     i = 2
-#     while i**2 <= n:
-#         if n%i==0:
-#             return 0
-#         i+=1
-#     return 1
-#
-#
-# while True:
-#     n = int(input())
-#
-#     if not 6 <= n <=1000000:
-#         break
-#
-#     is_solved = 0
-#     for a in range(2, n//2+1):
-#         if is_sosu(a):
-#             b = n-a
-#             if is_sosu(b):
-#                 print('%d = %d + %d'%(n, a, b))
-#                 is_solved = 1
-#                 break
-#     if is_solved == 0:
-#         print("Goldbach's conjecture is wrong.r")
 
-n=1000000
-a = [False,False] + [True]*(n-1)
-primes=[]
+import sys
+input = sys.stdin.readline
 
-for i in range(2,n+1):
-  if a[i]:
-    primes.append(i)
-    for j in range(2*i, n+1, i):
-        a[j] = False
+n = 1000000
+is_prime = [True] * (n+1)
+
+for i in range(2, n+1):
+    if is_prime[i] == True:
+        for j in range(i*2, n+1, i):
+            if is_prime[j] == True:
+                is_prime[j] = False
 
 while True:
     n = int(input())
 
-    if not 6 <= n <=1000000:
+    if n == 0:
         break
 
-    is_solved = 0
-    for a in primes:
-        b = n-a
-        if b in primes[::-1]:
-            print("%d = %d + %d"%(n,a,b))
-            is_solved = 1
+    for i in range(2, n):
+        if is_prime[i] == True and is_prime[n-i] == True:
+            print("%d = %d + %d"%(n,i,n-i))
+            is_solved = True
             break
-
-    if is_solved == 0:
-        print("Goldbach's conjecture is wrong.r")
+    if is_solved:
+        continue
+    else:
+        print("Goldbach's conjecture is wrong.")

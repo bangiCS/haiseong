@@ -6,7 +6,6 @@ answer = -1
 
 n, s, m = map(int, input().split())
 v = list(map(int, input().split()))
-now = s
 
 def bt(index, now):
     global answer

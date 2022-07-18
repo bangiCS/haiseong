@@ -19,7 +19,7 @@ while queue:
     for i in range(4):
         ny, nx = y + dd[i][0], x + dd[i][1]
         if 0 <= nx < m and 0 <= ny < n:
-            if graph[ny][nx] == 0 and wall <= k and visited[ny][nx][wall] == 0 :
+            if graph[ny][nx] == 0 and visited[ny][nx][wall] == 0 :
                 visited[ny][nx][wall] =  visited[y][x][wall] + 1
                 queue.append((ny,nx,wall))
             elif graph[ny][nx] == 1 and wall < k :
